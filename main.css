@@ -165,8 +165,8 @@ h1,h2,h3,h4,h5,h6{
     height: 30px;
     fill:white;
     vertical-align: top;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 body > main {
     margin-top: -280px;
