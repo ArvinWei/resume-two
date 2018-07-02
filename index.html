@@ -29,16 +29,16 @@
 </style>
 </head>
 <body>
-    <div id="siteWlecome" class="site-welcome active">
+    <div id="siteWelcome" class="site-welcome active">
       <div class="loading"></div>
     </div>
-    <div class="topNavBar">
+    <div id="topNavBar" class="topNavBar">
         <div class="topNavBar-inner clearfix">
             <a class="logo" href="#" alt="logo" style="float: left">
                 <span class="rs">RS</span>
                 <span class="card">card</span>
             </a>
-            <nav style="float: right;">
+            <nav class="menu" style="float: right;">
               <ul class="clearfix">
                 <li>
                   <a href="#">关 于</a>
@@ -48,9 +48,19 @@
                 </li>
                 <li>
                   <a href="#">作 品</a>
+                  <ul class="submenu">
+                    <li>作 品 1</li>
+                    <li>作 品 2</li>
+                    <li>作 品 3</li>
+                  </ul>
                 </li>
                 <li>
                   <a href="#">博 客</a>
+                  <ul class="submenu">
+                    <li>博 客 1</li>
+                    <li>博 客 2</li>
+                    <li>博 客 3</li>
+                  </ul>
                 </li>
                 <li>
                   <a href="#">日 历</a>
@@ -217,8 +227,25 @@
       </section>
       <script>
         setTimeout(function(){
-          siteWlecome.classList.remove('active')
-        },1000)
+          siteWelcome.classList.remove('active')
+        },1000) 
+
+        window.onscroll = function(xxxxx){
+          if(window.scrollY > 0){
+            topNavBar.classList.add('sticky')
+          }else{
+            topNavBar.classList.remove('sticky')
+          }
+        }
+        let liTags = document.querySelectorAll('nav.menu > ul >li')
+        for(let i=0; i<liTags.length; i++){
+          liTags[i].onmouseenter = function(x){
+            x.currentTarget.classList.add('active')
+          }
+          liTags[i].onmouseleave = function(x){
+            x.currentTarget.classList.remove('active')
+          }
+        }
        
       </script>
 </body>
