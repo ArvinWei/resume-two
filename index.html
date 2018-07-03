@@ -41,13 +41,13 @@
             <nav class="menu" style="float: right;">
               <ul class="clearfix">
                 <li>
-                  <a href="#">关 于</a>
+                  <a href="#siteAbout">关 于</a>
                 </li>
                 <li>
-                  <a href="#">技 能</a>
+                  <a href="#siteSkills">技 能</a>
                 </li>
                 <li>
-                  <a href="#">作 品</a>
+                  <a href="#sitePortfolio">作 品</a>
                   <ul class="submenu">
                     <li>作 品 1</li>
                     <li>作 品 2</li>
@@ -79,7 +79,7 @@
           <div class="mask"></div>
         </div>
         <main>
-          <div class="userCard">
+          <div id ="siteAbout" class="userCard">
             <div class="pictureAndText clearfix">
               <div class="picture">
                 <img src="./avatar.jpg" width=290 height=300 alt="头像">
@@ -133,7 +133,7 @@
     </p>
 
     </main>
-    <section class ="skills">
+    <section id = "siteSkills" class ="skills">
         <h2>技能</h2>
         <ol class ="clearfix">
           <li>
@@ -186,7 +186,7 @@
                   </li>
            </ol>
       </section>
-      <section class="portfolio">
+      <section id = "sitePortfolio" class="portfolio">
         <h2>作品集</h2>
         <nav>
           <ol class ="clearfix">
@@ -244,6 +244,17 @@
           }
           liTags[i].onmouseleave = function(x){
             x.currentTarget.classList.remove('active')
+          }
+        }
+        let aTags = document.querySelectorAll('nav.menu > ul >li >a')
+        for(let i=0; i<aTags.length; i++){
+          aTags[i].onclick = function(x){
+            x.preventDefault()
+            let a = x.currentTarget
+            let href = a.getAttribute('href')
+            let element = document.querySelector(href)
+            let top = element.offsetTop
+            window.scrollTo(0,top - 80)
           }
         }
        
