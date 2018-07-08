@@ -148,7 +148,7 @@
             HTML 5 &amp; CSS 3
           </h3>
           <div class ="progressBar">
-            <div class ="progress" style="width:70%;"></div>
+            <div class ="progress" style="width:75%;"></div>
           </div>
         </li>
         <li>
@@ -156,7 +156,7 @@
             JavaScript
           </h3>
           <div class ="progressBar">
-            <div class ="progress" style="width:10%;"></div>
+            <div class ="progress" style="width:80%;"></div>
           </div>
         </li>
         <li>
@@ -164,7 +164,7 @@
             jQuery
           </h3>
           <div class ="progressBar">
-            <div class ="progress" style="width:00%;"></div>
+            <div class ="progress" style="width:80%;"></div>
           </div>
         </li>
         <li>
@@ -172,7 +172,7 @@
             Vue
           </h3>
           <div class ="progressBar">
-            <div class ="progress" style="width:00%;"></div>
+            <div class ="progress" style="width:70%;"></div>
           </div>
         </li>
         <li>
@@ -180,7 +180,7 @@
             React
           </h3>
           <div class ="progressBar">
-            <div class ="progress"style="width:00%;"></div>
+            <div class ="progress"style="width:60%;"></div>
           </div>
         </li>
         <li>
@@ -237,24 +237,36 @@
   <script>
     setTimeout(function(){
       siteWelcome.classList.remove('active')
-    },1000) 
-    yyy()
+    },500) 
+
+    //添加offset类
+    let specialTags = document.querySelectorAll('[data-x')
+    for(let i = 0; i < specialTags.length; i++){
+      specialTags[i].classList.add('offset')
+    }
+
+    setTimeout(function(){
+       findClosest()
+     },1000)
+   
     window.onscroll = function(x){
       if(window.scrollY > 0){
         topNavBar.classList.add('sticky')
       }else{
         topNavBar.classList.remove('sticky')
       }
-      yyy()
+      findClosest()
     }
-    function yyy(){
+    function findClosest(){
       let specialTags = document.querySelectorAll('[data-x]')
       let minIndex = 0
       for(let i = 1;i<specialTags.length; i++){
-        if(Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY))
+        if(Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)){
           minIndex = i
+        }
       }
-      
+      //minIndex 就是离窗口顶部最近的元素
+      specialTags[minIndex].classList.remove('offset')
       let id = specialTags[minIndex].id
       let a = document.querySelector('a[href="#'+ id + '"]')
       let li = a.parentNode
